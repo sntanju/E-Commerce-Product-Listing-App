@@ -1,7 +1,15 @@
+import 'package:ecommerce_product_listing_app/home/product_service.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async{
+   WidgetsFlutterBinding.ensureInitialized();
+
+  final productService = ProductService();
+  final products = await productService.fetchProducts();
+
+  print(products); 
+
+  runApp(MyApp());
 }
  
  class MyApp extends StatelessWidget {
@@ -16,7 +24,9 @@ void main() {
         primarySwatch: Colors.deepPurple,
         useMaterial3: true,
       ),
-      home: Text("This is home page"),
+      home: Scaffold(
+        body: Center(child: Text("Checking product data in console")),
+      ),
     );
   }
 }
