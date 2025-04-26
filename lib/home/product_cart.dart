@@ -88,7 +88,7 @@ class ProductCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center, 
             children: [
               Text(
-                '\$$price',
+                '\$$price ',
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 14,
@@ -96,7 +96,7 @@ class ProductCard extends StatelessWidget {
               ),
               const SizedBox(width: 5), 
               Text(
-                '\$$originalPrice',
+                ' \$$originalPrice',
                 style: const TextStyle(
                   color: Colors.grey,
                   decoration: TextDecoration.lineThrough,
@@ -105,7 +105,7 @@ class ProductCard extends StatelessWidget {
               ),
               const SizedBox(width: 5), 
               Text(
-                '$discount% OFF',
+                ' $discount% OFF',
                 style: const TextStyle(
                   color: Colors.orange,
                   fontSize: 12,
@@ -117,8 +117,20 @@ class ProductCard extends StatelessWidget {
 
           Row(
             children: [
-              const Icon(Icons.star, color: Colors.amber, size: 16),
-              Text('$rating, ($stock)', style: const TextStyle(fontSize: 12), ),
+              Container(
+                padding: const EdgeInsets.all(1),
+                decoration: BoxDecoration(
+                  color: Colors.amber, 
+                  borderRadius: BorderRadius.circular(4), 
+                ),
+                child: const Icon(
+                  Icons.star,
+                  color: Colors.white, 
+                  size: 15,
+                ),
+              ),
+
+              Text('  $rating,  ($stock)', style: const TextStyle(fontSize: 12), ),
             ],
           )
         ],
