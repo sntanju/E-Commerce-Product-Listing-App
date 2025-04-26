@@ -1,15 +1,9 @@
-import 'package:ecommerce_product_listing_app/home/product_service.dart';
+import 'package:ecommerce_product_listing_app/home/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-void main() async{
-   WidgetsFlutterBinding.ensureInitialized();
-
-  final productService = ProductService();
-  final products = await productService.fetchProducts();
-
-  print(products); 
-
-  runApp(MyApp());
+void main() {
+  runApp(const ProviderScope(child: MyApp()));
 }
  
  class MyApp extends StatelessWidget {
@@ -24,9 +18,7 @@ void main() async{
         primarySwatch: Colors.deepPurple,
         useMaterial3: true,
       ),
-      home: Scaffold(
-        body: Center(child: Text("Checking product data in console")),
-      ),
+      home: const HomePage(),
     );
   }
 }
