@@ -1,16 +1,27 @@
-# ecommerce_product_listing_app
+# Ecommerce_Product_Listing_App
 
-A new Flutter project.
+This Flutter app fetches product data from an API (DummyJSON), implements infinite scrolling for pagination, and allows users to search and filter products by name, price, and rating. The app uses Riverpod 2.0 for state management.
 
-## Getting Started
+## Screenshots
+- Initial home page with products  
+  <img width="200" src="assets/images/Screenshot 1.png"> <img width="200" src="assets/images/Screenshot 2.png">
 
-This project is a starting point for a Flutter application.
+- Showing searched Products  
+  <img width="200" src="assets/images/Screenshot 3.png"> <img width="200" src="assets/images/Screenshot 4.png">
 
-A few resources to get you started if this is your first Flutter project:
+- Sorted by high price to low price  
+  <img width="200" src="assets/images/Screenshot 5.png"> <img width="200" src="assets/images/Screenshot 6.png"> <img width="200" src="assets/images/Screenshot 7.png">
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Core Features Implemented
+
+### 1. Product List
+- Fetch products: The app fetches product data from DummyJSON API.
+- Pagination: Infinite scrolling functionality.
+
+### 2. Search & Filters
+- Search: Users can search products by name.
+- Sorting: Products can be sorted by price (low-high) or rating.
+
+### 3. State Management
+- Riverpod 2.0: Used for efficient state management to minimize unnecessary rebuilds.

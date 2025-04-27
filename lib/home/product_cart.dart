@@ -9,12 +9,14 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final price = product['price'];
-    final discount = product['discountPercentage'];
+    final discount = (product['discountPercentage'] as num).round();
     final rating = product['rating'];
     final thumbnail = product['thumbnail'];
     final title = product['title'];
     final stock = product['stock'];
-    final originalPrice = (price / (1 - discount / 100)).round();
+    final reviews = product['reviews'] as List<dynamic>?; 
+    final reviewCount = reviews?.length ?? 0;
+    final originalPrice = (price / (1 - discount / 100)).toStringAsFixed(2);
     final bool isFavorited = index % 2 == 0; 
 
     return Container(
@@ -105,7 +107,7 @@ class ProductCard extends StatelessWidget {
               ),
               const SizedBox(width: 5), 
               Text(
-                ' $discount% OFF',
+                ' \$$discount% OFF',
                 style: const TextStyle(
                   color: Colors.orange,
                   fontSize: 12,
@@ -121,7 +123,7 @@ class ProductCard extends StatelessWidget {
                 padding: const EdgeInsets.all(1),
                 decoration: BoxDecoration(
                   color: Colors.amber, 
-                  borderRadius: BorderRadius.circular(4), 
+                  borderRadius: BorderRadius.circular(2), 
                 ),
                 child: const Icon(
                   Icons.star,
@@ -130,7 +132,7 @@ class ProductCard extends StatelessWidget {
                 ),
               ),
 
-              Text('  $rating,  ($stock)', style: const TextStyle(fontSize: 12), ),
+              Text('  $rating,  ($reviewCount)', style: const TextStyle(fontSize: 12), ),
             ],
           )
         ],
