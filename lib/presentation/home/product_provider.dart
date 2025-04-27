@@ -1,7 +1,7 @@
-import 'package:ecommerce_product_listing_app/home/product_cache_service.dart';
-import 'package:ecommerce_product_listing_app/home/sort_option.dart';
+import 'package:ecommerce_product_listing_app/presentation/home/product_cache_service.dart';
+import 'package:ecommerce_product_listing_app/presentation/home/sort_option.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'product_service.dart';
+import '../../core/services/product_service.dart';
 
 final productProvider = AsyncNotifierProvider<ProductNotifier, List<dynamic>>(() {
   return ProductNotifier();
