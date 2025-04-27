@@ -1,29 +1,54 @@
-import 'package:ecommerce_product_listing_app/home/sort_option.dart';
+import 'package:ecommerce_product_listing_app/presentation/home/product_cache_service.dart';
+import 'package:ecommerce_product_listing_app/presentation/home/sort_option.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'product_service.dart';
+import '../../core/services/product_service.dart';
 
 final productProvider = AsyncNotifierProvider<ProductNotifier, List<dynamic>>(() {
   return ProductNotifier();
 });
 
 class ProductNotifier extends AsyncNotifier<List<dynamic>> {
+
   final _productService = ProductService();
+  final _cacheService = ProductCacheService();
+
   final List<dynamic> _allProducts = [];
   int _page = 0;
+
   final int _limit = 10;
   bool _isFetching = false;
+
   String _searchText = '';
   SortOption? _sortOption;
 
   @override
   Future<List<dynamic>> build() async {
-    return await _fetchAndCache();
+
+    await _cacheService.init();
+
+    try {
+      final products = await _productService.fetchProducts(limit: _limit, skip: _page * _limit);
+      _allProducts.addAll(products);
+      await _cacheService.saveProducts(_allProducts);
+      return _applyFilters();
+    } catch (e) {
+      
+      final cachedProducts = _cacheService.getCachedProducts();
+      _allProducts.addAll(cachedProducts);
+      return _applyFilters();
+    }
+   
   }
 
   Future<List<dynamic>> _fetchAndCache() async {
-    final products = await _productService.fetchProducts(limit: _limit, skip: _page * _limit);
-    _allProducts.addAll(products);
-    return _applyFilters();
+      try {
+        final products = await _productService.fetchProducts(limit: _limit, skip: _page * _limit);
+        _allProducts.addAll(products);
+        await _cacheService.saveProducts(_allProducts);
+        return _applyFilters();
+      } catch (e) {
+        return _applyFilters();
+      }
   }
 
   Future<void> fetchInitialProducts() async {

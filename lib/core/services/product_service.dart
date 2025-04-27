@@ -9,6 +9,10 @@ class ProductService {
       'skip': skip,
     });
 
-    return response.data['products'];
+     if (response.statusCode == 200) {
+      return response.data['products'];
+    } else {
+      throw Exception('Failed to load products');
+    }
   }
 }
