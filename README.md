@@ -3,13 +3,21 @@
 This Flutter app fetches product data from an API (DummyJSON), implements infinite scrolling for pagination, and allows users to search and filter products by name, price, and rating. The app uses Riverpod 2.0 for state management.
 
 ## Screenshots
-![ Initial home page with products](assets/images/Screenshot 1.png)
-![ Products in scrolling](assets/images/Screenshot 2.png)
-![ Showing searched Products](assets/images/Screenshot 3.png)
-![ Showing sorting options](assets/images/Screenshot 4.png)
-![ Sorted by high price to low price](assets/images/Screenshot 5.png)
-![ Sorted by low price to high price](assets/images/Screenshot 6.png)
-![ Sorted by rating (high to low)](assets/images/Screenshot 7.png)
+
+- Initial home page with products
+<img width="200" src="assets/images/Screenshot 1.png">
+- Products in scrolling
+<img width="200" src="assets/images/Screenshot 2.png">
+- Showing searched Products
+<img width="200" src="assets/images/Screenshot 3.png">
+- Showing sorting options
+<img width="200" src="assets/images/Screenshot 4.png">
+- Sorted by high price to low price
+<img width="200" src="assets/images/Screenshot 5.png">
+- Sorted by low price to high price
+<img width="200" src="assets/images/Screenshot 6.png">
+Sorted by rating (high to low)
+<img width="200" src="assets/images/Screenshot 7.png">
 
 ## Core Features Implemented
 
